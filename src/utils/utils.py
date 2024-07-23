@@ -6,6 +6,12 @@ from agreement import _agreement
 from typing import Optional, List
 
 class Utils:
+    """
+    class
+    """
+    def __inits__(self):
+        self.clear_screen = os.system("cls")
+        
     def input_request(self, available_answers: Optional[List[str]] = None) -> str:
         if available_answers is None:
             return msvcrt.getch().decode()

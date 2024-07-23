@@ -3,11 +3,14 @@ import msvcrt
 from src.utils.utils import _utils
 import sys
 
-class Agreement:
+class Agreement:    
+    """
+    class
+    """
     def __init__(self):
         self.clear_screen = os.system("cls")
 
-    def check_files(self):
+    def check_eula_file(self):
         self.clear_screen()
         if os.path.exists("EULA.txt"):
             with open("EULA.txt", "r") as eulaFile:
@@ -23,8 +26,6 @@ class Agreement:
 
     def open_license(self):
         self.clear_screen()
-
-
         with open("LICENSE", "r") as file:
             print(file.read())
         print("\nPress any key to continue...")
