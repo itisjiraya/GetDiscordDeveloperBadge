@@ -1,0 +1,2 @@
+The project is subject to the MIT license.
+EULA=False
