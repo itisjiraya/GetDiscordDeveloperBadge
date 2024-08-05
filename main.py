@@ -15,7 +15,7 @@ def main():
 
             language = settings.get('language')
 
-            if language not in ["ru", "en"]:
+            if language not in ['ru', 'en']:
                 utils.utils_instance.language_selection()
 
     except json.decoder.JSONDecodeError:
