@@ -21,7 +21,11 @@ def main():
     except json.decoder.JSONDecodeError:
         utils.utils_instance.language_selection()
 
-    agreement.agreement_instance.check_eula_file()
+    if agreement.agreement_instance.check_eula_file():
+        utils.utils_instance.token_request()
+
+    else:
+        agreement.agreement_instance.license_confirmation()
 
 
 if __name__ == "__main__":

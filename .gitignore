@@ -240,17 +240,11 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
-=======
->>>>>>> 2d24e2e7594736f26c0b7248221de8509bf0af2b
+
 
 # Licence agreement file
 EULA.txt
 
-<<<<<<< HEAD
 # Settings
 settings/
 settings.json
-=======
-# Settings directory
-settings/
->>>>>>> 2d24e2e7594736f26c0b7248221de8509bf0af2b

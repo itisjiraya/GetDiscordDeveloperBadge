@@ -2,28 +2,28 @@ import os
 import msvcrt
 from src.utils import utils
 import sys
-import gettext
 
 EULA_FILE = "EULA.txt"
 
 
 class Agreement:
-    def check_eula_file(self):
+    @staticmethod
+    def check_eula_file() -> bool:
         """
         Check if the EULA.txt file exists and if it contains the correct license.
         """
         os.system("cls")
         if os.path.exists(EULA_FILE):
             with open(EULA_FILE, "r") as eulaFile:
-                if "The project is subject to the MIT license.\nEULA=True" == eulaFile.read():
-                    return utils.utils_instance.token_request()
+                if "The project is subject to the MIT license.\nEULA agreement=True" == eulaFile.read():
+                    return True
 
                 else:
-                    return self.license_confirmation()
+                    return False
 
         else:
-            open(EULA_FILE, "w+").write("The project is subject to the MIT license.\nEULA=False")
-            return self.license_confirmation()
+            open(EULA_FILE, "w+").write("The project is subject to the MIT license.\nEULA agreement=False")
+            return False
 
     def open_license(self):
         """
@@ -53,13 +53,13 @@ class Agreement:
 
         if user_input == "1":
             with open(EULA_FILE, "w") as eulaFile:
-                eulaFile.write("The project is subject to the MIT license.\nEULA=True")
+                eulaFile.write("The project is subject to the MIT license.\nEULA agreement=True")
 
             return utils.utils_instance.token_request()
 
         elif user_input == "2":
             with open(EULA_FILE, "w") as eulaFile:
-                eulaFile.write("The project is subject to the MIT license.\nEULA=False")
+                eulaFile.write("The project is subject to the MIT license.\nEULA agreement=False")
             print("License is mandatory for acceptance. ^-^")
             sys.exit()
 
