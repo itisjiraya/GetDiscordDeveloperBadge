@@ -1,13 +1,12 @@
 import json
 import os
-from src.utils import agreement
-from src.utils import utils
+from src.utils import licence_manager, language_manager, input_handler
 
 
 def main():
     settings_dir = "./settings/"
     if not os.path.exists(settings_dir) or not os.path.exists(os.path.join(settings_dir, "settings.json")):
-        utils.utils_instance.language_selection()
+        language_manager.LanguageManager.language_selection()
 
     try:
         with open(os.path.join(settings_dir, "settings.json"), "r") as settings_file:
@@ -16,16 +15,16 @@ def main():
             language = settings.get('language')
 
             if language not in ['ru', 'en']:
-                utils.utils_instance.language_selection()
+                language_manager.LanguageManager.language_selection()
 
     except json.decoder.JSONDecodeError:
-        utils.utils_instance.language_selection()
+        language_manager.LanguageManager.language_selection()
 
-    if agreement.agreement_instance.check_eula_file():
-        utils.utils_instance.token_request()
+    if licence_manager.LicenseManager.check_eula_file():
+        input_handler.input_handler_instance.token_request()
 
     else:
-        agreement.agreement_instance.license_confirmation()
+        licence_manager.license_manager_instance.license_confirmation()
 
 
 if __name__ == "__main__":
